@@ -8,10 +8,6 @@ numbers.forEach((number) => {
     inputNumber(event.target.value);
     updateScreen(currentNumber);
     console.log(event.target.value);
-    if (calculationOperator==='') {
-      updateHistory(currentNumber);
-    }
-
   });
   //console.log(number);
 });
@@ -24,20 +20,11 @@ const updateScreen=(number)=>{
 };
 
 //menampilkan history screen
-const historyScreen=document.querySelector('.history');
-
-const updateHistory=(calculatorScreen)=>{
-  historyScreen.value=calculatorScreen;
-
-};
 
 let prevNumber='';
 let calculationOperator='';
 let currentNumber='0';
 let hasil='0'; //memperoleh angka setelah hasil % dan =
-let prevHitory='';
-let calculationOperatorHis='';
-let currentHistory='0';
 
 //kondisi isi angka 0
 const inputNumber=(number)=>{
@@ -60,19 +47,13 @@ const operators=document.querySelectorAll(".operator");
 operators.forEach((operator) => {
   operator.addEventListener("click",(event)=>{
     console.log(event.target.value);
-    //calculationOperatorHis=event.target.value;
     inputOperator(event.target.value);
-    if (currentNumber==='0') {
-      updateHistory(prevNumber+=event.target.value);
-    }
-
   });
 });
 
 const inputOperator=(operator)=>{
   if(calculationOperator===''){
     prevNumber=currentNumber;
-    //currentHistory=prevNumber;
   }else { //utk menghitung ketikan menggunakan operator
     if (currentNumber==='0') {
 
@@ -81,12 +62,9 @@ const inputOperator=(operator)=>{
       prevNumber=currentNumber; //mengambil nilai dari currentNumber
       updateScreen(currentNumber);
     }
-
   }
   calculationOperator=operator;
-  //cekHistory();
   currentNumber='0';
-
 };
 
 
